@@ -1,5 +1,6 @@
 ./docker/build.sh
 ./docker/Dockerfile
+./docker/release.sh
 ./docker/gen_inno_verify.sh
 ./docker/requirements.sh
 ./docker/verify.py
