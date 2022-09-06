@@ -92,9 +92,10 @@ if delete_txt != None:
         contents = f.readlines()
         contents = [temp_dst + "/" +value.split("\n")[0].split("./")[1] for value in contents]
     for de in contents:
-        print("Remove file:({})".format(de))
-        os.remove(de)
-
+        if os.path.exists(de):
+            print("Remove file:({})".format(de))
+            os.remove(de)
+            
 # distutils
 # cpature all python files but exclude __init__.py
 print('start package')
