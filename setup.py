@@ -2,6 +2,9 @@ import sys, os, glob, shutil
 from distutils.core import setup
 from datetime import datetime, timezone, timedelta
 
+EXCLUDE_CFILE="YOLO/darknet"
+IGNORE_PATTERNS='*.xmodel'
+
 # we'd better have Cython installed, or it's a no-go
 try:
     from Cython.Distutils import build_ext
@@ -83,7 +86,7 @@ if (src_path==dst_path or backup_path):
 temp_dst = os.path.join( os.getcwd(), '{}'.format(os.path.basename(dst_path)) )
 
 if src_path != temp_dst:
-    shutil.copytree(src_path, temp_dst, ignore=shutil.ignore_patterns('*.xmodel'))
+    shutil.copytree(src_path, temp_dst, ignore=shutil.ignore_patterns(IGNORE_PATTERNS))
     print('create a temp_dst ({})'.format(temp_dst))
 
 # Delete file in temp_dst
@@ -118,7 +121,7 @@ setup(
 
 # remove build and `.py`
 [ os.remove(f) for f in extensions ]
-[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) ]
+[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) if not (EXCLUDE_CFILE in f)]
 
 # remove the platform information from shared objects name 
 print('renaming ...')
