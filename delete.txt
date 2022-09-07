@@ -5,5 +5,4 @@
 ./docker/release.sh
 ./docker/inno_verify
 ./docker/requirements.sh
-./docker/verify.py
 ./ObjectDetection/YOLO/darknet/libdarknet.so
