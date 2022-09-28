@@ -7,7 +7,6 @@
 ./Classification/classification.py
 ./ObjectDetection/YOLO/yolo.py
 ./ObjectDetection/YOLO/darknet
-./webapi/common/pretrained_download.py
 ./webapi/augmentation.py
 ./webapi/control_model.py
 ./webapi/control_project.py
@@ -21,3 +20,4 @@
 ./app.py
 ./train.py
 ./convert.py
+./pretrainedmodel/pretrained_download.py
