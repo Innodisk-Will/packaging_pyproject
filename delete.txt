@@ -1,8 +1,9 @@
 ./docker/build.sh
 ./docker/Dockerfile
-./docker/entrypoint
 ./docker/py2so.sh
 ./docker/release.sh
+./docker/gen_inno_verify.sh
 ./docker/inno_verify
 ./docker/requirements.sh
-./ObjectDetection/YOLO/darknet/libdarknet.so
+./common/verify.py
+./objectdetection/yolo/darknet/libdarknet.so
