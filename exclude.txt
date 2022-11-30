@@ -2,6 +2,7 @@
 ./convert/common/keras2tensorflow.py
 ./convert/common/keras2onnx.py
 ./convert/intel/convert_intel.py
+./convert/intel/run_intel.py
 ./convert/nvidia/convert_nvidia.py
 ./convert/xilinx/convert_xilinx.py
 ./convert/xilinx/run_xilinx.py
