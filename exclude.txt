@@ -17,6 +17,7 @@
 ./webapi/labeling.py
 ./webapi/training_model.py
 ./webapi/upload_dataset.py
+./webapi/icap.py
 ./evaluate.py
 ./app.py
 ./train.py
