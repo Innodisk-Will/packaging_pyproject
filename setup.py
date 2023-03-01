@@ -2,7 +2,8 @@ import sys, os, glob, shutil
 from distutils.core import setup
 from datetime import datetime, timezone, timedelta
 
-EXCLUDE_CFILE="YOLO/darknet"
+EXCLUDE_FOLDER1="YOLO/darknet"
+EXCLUDE_FOLDER2="convert/common"
 IGNORE_PATTERNS='*.xmodel'
 
 # we'd better have Cython installed, or it's a no-go
@@ -121,7 +122,7 @@ setup(
 
 # remove build and `.py`
 [ os.remove(f) for f in extensions ]
-[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) if not (EXCLUDE_CFILE in f)]
+[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) if not (EXCLUDE_FOLDER1 in f) or not (EXCLUDE_FOLDER2 in f)]
 
 # remove the platform information from shared objects name 
 print('renaming ...')
