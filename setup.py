@@ -1,9 +1,10 @@
 import sys, os, glob, shutil
 from distutils.core import setup
 from datetime import datetime, timezone, timedelta
+from os import walk
+from os.path import join
 
-EXCLUDE_FOLDER1="YOLO/darknet"
-EXCLUDE_FOLDER2="convert/common"
+EXCLUDE_CFILE="YOLO/darknet"
 IGNORE_PATTERNS='*.xmodel'
 
 # we'd better have Cython installed, or it's a no-go
@@ -110,6 +111,13 @@ if exclude_txt != None:
     with open(exclude_txt) as f:
         contents = f.readlines()
         contents = [temp_dst + "/" +value.split("\n")[0].split("./")[1] for value in contents]
+    folder_list = [ ed for ed in contents if os.path.isdir(ed)]
+    if len(folder_list) > 0:
+        for path in folder_list:
+            for root, dirs, files in walk(path):
+                for f in files:
+                    fullpath = join(root, f)
+                    contents.append(fullpath)
     for ed in contents:
         extensions = [ val for val in extensions if not (ed in val)]
 
@@ -122,7 +130,7 @@ setup(
 
 # remove build and `.py`
 [ os.remove(f) for f in extensions ]
-[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) if not (EXCLUDE_FOLDER1 in f) or not (EXCLUDE_FOLDER2 in f)]
+[ os.remove(f) for f in glob.glob(f"{temp_dst}/**/*.c", recursive=True) if not (EXCLUDE_CFILE in f)]
 
 # remove the platform information from shared objects name 
 print('renaming ...')

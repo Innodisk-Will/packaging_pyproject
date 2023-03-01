@@ -1,5 +1,6 @@
 ./common/logger.py
 ./common/utils.py
+./convert/common/
 ./convert/intel/run_intel.py
 ./convert/intel/convert_intel.py
 ./convert/intel/convert_cls.py
