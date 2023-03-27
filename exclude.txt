@@ -22,6 +22,7 @@
 ./webapi/export_model.py
 ./webapi/icap.py
 ./webapi/labeling.py
+./webapi/init_webapi.py
 ./webapi/training_model.py
 ./webapi/upload_dataset.py
 ./evaluate.py
